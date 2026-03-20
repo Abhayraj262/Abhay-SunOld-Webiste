@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'RBNo3.1 Book';
+    src: url('RBNo31-Book.eot');
+    src: url('RBNo31-Book.eot?#iefix') format('embedded-opentype'),
+        url('RBNo31-Book.woff2') format('woff2'),
+        url('RBNo31-Book.woff') format('woff'),
+        url('RBNo31-Book.ttf') format('truetype'),
+        url('RBNo31-Book.svg#RBNo3.1-Book') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

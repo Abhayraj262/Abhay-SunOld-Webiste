@@ -1,0 +1,58 @@
+
+RewriteOptions inherit
+
+# HTTPS, www redirects, and 302 redirects (production only - requires mod_expires)
+<IfModule mod_expires.c>
+
+    RewriteEngine on
+     Redirect 302 /bis-licence-consultants /bis-registration-certification
+     Redirect 302 /lmpc-certification /lmpc-certification-consultants
+     Redirect 302 /cdsco /cdsco-registration-certification
+     Redirect 302 /bis-certification /bis-registration-certification
+     Redirect 302 /peso-certification /peso-certification-consultants
+     Redirect 302 /bis-(crs)-registration-for-elect /bis-crs-registration-for-elects
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+    # Non-www to www redirect
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+</IfModule>
+
+# Clean URL rewrite rules (works on both localhost and production)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Remove .php extension from URLs
+    RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+    RewriteRule ^ /%1 [NC,L,R=301]
+    
+    # Notifications path
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ notifications.php?path=$1 [NC,L]
+        
+    RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ /404.php [R=404,L]
+
+    # Serve .php files without the .php extension
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*?)/?$ $1.php [NC,L]
+
+    # Remove index.php from URLs
+    RewriteCond %{THE_REQUEST} ^.*/index\.php 
+    RewriteRule ^(.*)index.php$ /$1 [R=301,L]
+
+</IfModule>
+
+# Custom 404 error page
+ErrorDocument 404 /404.php
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^sunconsultants\.co\.in$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sunconsultants\.co\.in$
+RewriteRule ^/?$ "https\:\/\/sunconsultants\.co\.in\/" [R=301,L]
