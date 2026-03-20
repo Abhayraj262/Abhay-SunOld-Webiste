@@ -1,0 +1,5 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^gads\.sunconsultants\.co\.in$
+RewriteRule ^/?$ "http\:\/\/https\:\/\/" [R=301,L]
+
