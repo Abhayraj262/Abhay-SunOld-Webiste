@@ -164,6 +164,8 @@
                 <!--x-->
                  <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/wpc-certification-consultants" style="margin-top: -34px;
                margin-left: 10px;">WPC</a>
+                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> 
+                <a href="https://sunconsultants.co.in/icat-certificate-india" style="margin-top: -34px; margin-left: 10px;">ICAT Certificate in India</a>
                 <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/stqc-certificate-india" style="margin-top: -34px;
                margin-left: 10px;">STQC Certificate</a>
             </li>
