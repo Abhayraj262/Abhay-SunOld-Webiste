@@ -1,4 +1,9 @@
 
+# Block search engine indexing
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
 RewriteOptions inherit
 
 # HTTPS, www redirects, and 302 redirects (production only - requires mod_expires)

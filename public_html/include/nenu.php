@@ -1,5 +1,7 @@
 <head>
 
+  <meta name="robots" content="noindex, nofollow">
+
   <!-- Favicon
 ================================================== -->
   <link rel="icon" type="https://sunconsultants.co.in/image/png" href="img/logo/ll.webp">

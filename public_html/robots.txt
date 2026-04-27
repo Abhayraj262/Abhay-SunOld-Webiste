@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://sunconsultants.co.in/sitemap.xml
+Disallow: /
