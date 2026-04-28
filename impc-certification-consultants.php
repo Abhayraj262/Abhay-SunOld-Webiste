@@ -23,7 +23,11 @@
   <meta name="twitter:description" content="Ready for LMPC Certification. Get LMPC certificate with the assistance of our experts. Apply for Legal metrology registration certificate today." />
   <meta name="twitter:image" content="https://sunconsultants.co.in/img/isi-msrk-img/LMPC-11.jpg" />
   <meta name="twitter:image:alt" content="LMPC Certification" />
+<<<<<<< HEAD
     <meta name="robots" content="index, follow">
+=======
+    <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
   <!-- Canonical Tag ====================================================-->
  <link rel="canonical" href="https://sunconsultants.co.in/lmpc-certification-consultants" />

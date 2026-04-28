@@ -31,7 +31,11 @@
   <meta name="twitter:description" content="Complete details on ICAT Certificate in India including ICAT Certification process, cost, audit, requirements, and approval." />
   <meta name="twitter:image" content="https://sunconsultants.co.in/images/icat-certification.jpg" />
   <meta name="twitter:image:alt" content="ICAT Certification" />
+<<<<<<< HEAD
   <meta name="robots" content="index, follow">
+=======
+  <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
   <link rel="canonical" href="https://sunconsultants.co.in/icat-certificate-india" />
 
@@ -807,7 +811,11 @@
             <section id="contact" class="contact">
               <div class="container" data-aos="fade-up">
                 <div class="section-header">
+<<<<<<< HEAD
                   <h2><h4 class=""><i class="fa fa-phone blink_me" aria-hidden="true"></i> REQUEST FREE CALLBACK</h4></h2>
+=======
+                  <div><div class=""><i class="fa fa-phone blink_me" aria-hidden="true"></i> REQUEST FREE CALLBACK</div></div>
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
                 </div>
 
                 <div class="row gx-lg-0 gy-4">

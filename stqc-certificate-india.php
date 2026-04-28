@@ -31,7 +31,11 @@
       <meta name="twitter:description" content="Complete details on STQC Certificate in India including STQC Certification process, cost, audit, requirements, and approval."/>
       <meta name="twitter:image" content="https://sunconsultants.co.in/images/stqc-certification.jpg"/>
       <meta name="twitter:image:alt" content="STQC Certification"/>
+<<<<<<< HEAD
       <meta name="robots" content="index, follow">
+=======
+      <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
 
 <link rel="canonical" href="https://sunconsultants.co.in/stqc-certificate-india" />

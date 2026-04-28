@@ -35,7 +35,11 @@
   <meta name="twitter:description" content="LMPC registration or certification is to be obtained by Foreign manufacturers, Indian importers and manufacturers related to MRP label of product" />
   <meta name="twitter:image" content="/assets/img/LMPC.gif" />
   <meta name="twitter:image:alt" content="LMPC Certification" />
+<<<<<<< HEAD
   <meta name="robots" content="index, follow">
+=======
+  <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
   <link rel="canonical" href="https://sunconsultants.co.in/lmpc-certification-consultants" />
 

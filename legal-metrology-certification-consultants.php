@@ -31,7 +31,11 @@
       <meta name="twitter:description" content="LEGAL METROLOGY CERTIFICATION CONSULTANTS IN INDIA"/>
       <meta name="twitter:image" content="https://sunconsultants.co.in/assets/img/legal-metrology.png"/>
       <meta name="twitter:image:alt" content="legal Metrology Certification"/>
+<<<<<<< HEAD
         <meta name="robots" content="index, follow">
+=======
+        <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
 
 <link rel="canonical" href="https://sunconsultants.co.in/legal-metrology-certification-consultants" />

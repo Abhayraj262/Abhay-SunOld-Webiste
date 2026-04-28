@@ -35,7 +35,11 @@
     content="Are you looking for the certification of plastic waste for your organization? Sun consultant is one of the best BIS Licence consultants." />
   <meta name="twitter:image" content="img/img-update/plastic.png" />
   <meta name="twitter:image:alt" content="Plastic Waste Certification" />
+<<<<<<< HEAD
   <meta name="robots" content="index, follow">
+=======
+  <meta name="robots" content="noindex, nofollow">
+>>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 
    <link rel="canonical" href="https://sunconsultants.co.in/plastic-waste-management-registration" />
 
