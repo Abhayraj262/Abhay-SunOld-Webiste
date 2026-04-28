@@ -1,0 +1,8 @@
+[14-Sep-2023 22:36:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home/hhzf1sd49q0r/public_html/ads.sunconsultants.co.in/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/hhzf1sd49q0r/public_html/ads.sunconsultants.co.in/wp-admin/includes/admin.php on line 16
+[14-Sep-2023 22:37:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home/hhzf1sd49q0r/public_html/ads.sunconsultants.co.in/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/hhzf1sd49q0r/public_html/ads.sunconsultants.co.in/wp-admin/includes/admin.php on line 16
