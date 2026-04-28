@@ -39,12 +39,7 @@
     content="Ready for BIS Certification. Get BIS certificate with the assistance of our experts. Apply for BIS certificate today." />
   <meta name="twitter:image" content="https://sunconsultants.co.in/img/isi-msrk-img/LMPC-11.jpg" />
   <meta name="twitter:image:alt" content="LMPC Certification" />
-<<<<<<< HEAD
   <meta name="robots" content="index, follow">
-=======
-  <meta name="robots" content="noindex, nofollow">
->>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

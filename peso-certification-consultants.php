@@ -41,13 +41,7 @@
     content="PESO is established by the Government of India under department for the promotion of industry and internal trade under the Ministry of Commerce and Industry." />
   <meta name="twitter:image" content="https://sunconsultants.co.in/img/isi-msrk-img/PESO-CERTIFICATION.jpg" />
   <meta name="twitter:image:alt" content="PESO Certification" />
-<<<<<<< HEAD
   <meta name="robots" content="index, follow">
-=======
-  <meta name="robots" content="noindex, nofollow">
->>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
-
-
   <link rel="canonical" href="https://sunconsultants.co.in/peso-certification-consultants" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />

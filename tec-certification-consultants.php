@@ -19,11 +19,7 @@
 
       <meta name="description" itemprop="description" content="TEC Certification or online TEC registration is applicable on all types of telecom products and is granted by Ministry of Communications to companies worldwide."/> 
       <meta name="keywords" content="TEC Certification, TEC Registration, TEC Registration Online, Tech Certificate, TEC Online Registration, TEC License"/> 
-<<<<<<< HEAD
       <meta name="robots" content="index, follow">
-=======
-      <meta name="robots" content="noindex, nofollow">
->>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
       <meta name="viewport" content="width=device-width, initial-scale=1"/>  
       <meta name="author" content="Sun Consultants & Engineers"/>
       <meta property="og:url" content="/tec-certification-consultants"/>

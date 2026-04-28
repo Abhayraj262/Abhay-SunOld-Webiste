@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 define('WP_CACHE', true); // WP-Optimize Cache
-=======
-define('WP_CACHE', false); // Disable page cache for local debugging
->>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 /**
  * The base configuration for WordPress
  *

@@ -47,11 +47,7 @@ if ($conn->connect_error) {
 
 	<!-- Canonical Tag ====================================================-->
 	<link rel="canonical" href="https://sunconsultants.co.in/latest-notifications" />
-<<<<<<< HEAD
 	<meta name="robots" content="index, follow">
-=======
-	<meta name="robots" content="noindex, nofollow">
->>>>>>> 41ce8a4de55d6ef8d16e7739310d8780e7467105
 	<!-- Favicon ================================================== -->
 	<link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
