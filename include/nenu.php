@@ -1,3 +1,44 @@
+<?php
+$megamenu_services_per_column = 10;
+$megamenu_services_column_count = 3;
+$megamenu_services = [
+  ['href' => 'https://sunconsultants.co.in/cdsco-registration-certification', 'label' => 'CDSCO Registration'],
+  ['href' => 'https://sunconsultants.co.in/fmcs-certification-consultants', 'label' => 'BIS Mark (ISI license) for Foreign Manufactures'],
+  ['href' => 'https://sunconsultants.co.in/isi-mark-registration-certification', 'label' => 'ISI MARK (BIS) for Indian Manufacturers'],
+  ['href' => 'https://sunconsultants.co.in/epr-certification-consultants', 'label' => 'EPR Registration'],
+  ['href' => 'https://sunconsultants.co.in/epr-certification-consultants', 'label' => 'Battery Waste Management'],
+  ['href' => 'https://sunconsultants.co.in/lmpc-certification-consultants', 'label' => 'LMPC Registration'],
+  ['href' => 'https://sunconsultants.co.in/plastic-waste-management-registration', 'label' => 'Plastic Waste Management'],
+  ['href' => 'https://sunconsultants.co.in/legal-metrology-certification-consultants', 'label' => 'LEGAL METROLOGY'],
+  ['href' => 'https://sunconsultants.co.in/bis-registration-certification', 'label' => 'BIS Certification'],
+  ['href' => 'https://sunconsultants.co.in/bis-crs-registration-for-electronic', 'label' => 'CRS Registration (BIS)'],
+  ['href' => 'https://sunconsultants.co.in/peso-certification-consultants', 'label' => 'PESO APPROVAL'],
+  ['href' => 'https://sunconsultants.co.in/tec-certification-consultants', 'label' => 'TEC'],
+  ['href' => 'https://sunconsultants.co.in/bis-scheme-x-certification-india', 'label' => 'BIS Scheme X Certification'],
+  ['href' => 'https://sunconsultants.co.in/rohs-certification-consultants', 'label' => 'ROHS'],
+  ['href' => 'https://sunconsultants.co.in/bee-registration-certification', 'label' => 'BEE'],
+  ['href' => 'https://sunconsultants.co.in/ce-certification-consultants', 'label' => 'CE CERTIFICATION'],
+  ['href' => 'https://sunconsultants.co.in/emi-emc-certification-consultants', 'label' => 'EMI/EMC'],
+  ['href' => 'https://sunconsultants.co.in/cb-certification-consultants', 'label' => 'CB CERTIFICATION'],
+  ['href' => 'https://sunconsultants.co.in/eta-certification-consultants', 'label' => 'WPC ETA'],
+  ['href' => 'https://sunconsultants.co.in/wpc-certification-consultants', 'label' => 'WPC'],
+  ['href' => 'https://sunconsultants.co.in/icat-certificate-india', 'label' => 'ICAT Certificate in India'],
+  ['href' => 'https://sunconsultants.co.in/stqc-certificate-india', 'label' => 'STQC Certificate'],
+];
+$megamenu_max_cells = $megamenu_services_per_column * $megamenu_services_column_count;
+$megamenu_items = array_slice($megamenu_services, 0, $megamenu_max_cells);
+$megamenu_chunks = array_values(array_chunk($megamenu_items, $megamenu_services_per_column));
+while (count($megamenu_chunks) < $megamenu_services_column_count) {
+  $megamenu_chunks[] = [];
+}
+$megamenu_chunks = array_slice($megamenu_chunks, 0, $megamenu_services_column_count);
+foreach ($megamenu_chunks as &$megamenu_col) {
+  while (count($megamenu_col) < $megamenu_services_per_column) {
+    $megamenu_col[] = null;
+  }
+}
+unset($megamenu_col);
+?>
 <head>
 
   <meta name="robots" content="noindex, nofollow">
@@ -41,8 +82,7 @@
    <link rel="icon" type="image/png" href="https://sunconsultants.co.in/img/logo/ll.webp">
 
   <!-- Template Main CSS File -->
-  <link href="https://sunconsultants.co.in/assets/css/main.css" rel="stylesheet">
-  
+   <link href="https://sunconsultants.co.in/assets/css/main.css" rel="stylesheet">
   </head>
 
 <section id="topbar" class="topbar d-flex align-items-center">
@@ -110,68 +150,25 @@
 
 
           <li class="dropdown megamenu"><a href="#"><span>SERVICES</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul >
- <li>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px;margin-top: 20px;"></i><a href="https://sunconsultants.co.in/cdsco-registration-certification" style="    margin-top: -34px;
-                margin-left: 10px;">CDSCO Registration</a>
-                
-                   
-                
-              
-                
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 12px;"></i> <a href="https://sunconsultants.co.in/fmcs-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">BIS Mark (ISI license) for <br> Foreign Manufactures</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/isi-mark-registration-certification" style="margin-top: -34px;
-                margin-left: 10px;">ISI MARK (BIS) for <br> Indian Manufacturers</a>
-             <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i>   <a href="https://sunconsultants.co.in/epr-certification-consultants" style="margin-top: -34px;
-             margin-left: 10px;">EPR Registration</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i><a href="https://sunconsultants.co.in/epr-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">Battery Waste Management</a>
-              <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i>  <a href="https://sunconsultants.co.in/lmpc-certification-consultants" style="margin-top: -34px;
-              margin-left: 10px;">LMPC Registration </a>
-
-
-              </li>
-              <li>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i>   <a href="https://sunconsultants.co.in/plastic-waste-management-registration" style="margin-top: -34px;
-                margin-left: 10px;">Plastic Waste Management </a>
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/legal-metrology-certification-consultants" style="margin-top: -34px;
-               margin-left: 10px;">LEGAL METROLOGY</a>
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/bis-registration-certification" style="margin-top: -34px;
-               margin-left: 10px;">BIS Certification</a>
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/bis-crs-registration-for-electronic" style="margin-top: -34px;
-               margin-left: 10px;">CRS Registration (BIS)</a>
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/peso-certification-consultants" style="margin-top: -34px;
-               margin-left: 10px;">PESO APPROVAL</a>
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/tec-certification-consultants" style="margin-top: -34px;
-               margin-left: 10px;">TEC </a>
-              
-               
-               <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/bis-scheme-x-certification-india" style="margin-top: -34px;
-                margin-left: 10px;">BIS Scheme X Certification </a>
-              </li>
-              <li>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/rohs-certification-consultants"style="margin-top: -34px;
-                margin-left: 10px;">ROHS</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/bee-registration-certification"style="margin-top: -34px;
-                margin-left: 10px;">BEE</a>
-                 <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i><a href="https://sunconsultants.co.in/ce-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">CE CERTIFICATION</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/emi-emc-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">EMI/EMC</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/cb-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">CB CERTIFICATION</a>
-                  <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/eta-certification-consultants" style="margin-top: -34px;
-                margin-left: 10px;">WPC ETA </a>
-                <!--x-->
-                 <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/wpc-certification-consultants" style="margin-top: -34px;
-               margin-left: 10px;">WPC</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> 
-                <a href="https://sunconsultants.co.in/icat-certificate-india" style="margin-top: -34px; margin-left: 10px;">ICAT Certificate in India</a>
-                <i class="fa fa-angle-right" style="font-size:20px; margin-left: 10px; margin-top: 8px;"></i> <a href="https://sunconsultants.co.in/stqc-certificate-india" style="margin-top: -34px;
-               margin-left: 10px;">STQC Certificate</a>
-            </li>
-            
+            <ul class="megamenu-panel">
+              <?php foreach ($megamenu_chunks as $megamenu_col) : ?>
+                <li class="megamenu-panel__column">
+                  <ul class="megamenu-panel__col">
+                    <?php foreach ($megamenu_col as $megamenu_entry) : ?>
+                      <?php if ($megamenu_entry === null) : ?>
+                        <li class="megamenu-panel__cell--empty"><span class="megamenu-panel__placeholder" aria-hidden="true"></span></li>
+                      <?php else : ?>
+                        <li>
+                          <a class="megamenu-panel__link" href="<?php echo htmlspecialchars($megamenu_entry['href'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <i class="fa fa-angle-right megamenu-panel__icon" aria-hidden="true"></i>
+                            <span class="megamenu-panel__label"><?php echo htmlspecialchars($megamenu_entry['label'], ENT_QUOTES, 'UTF-8'); ?></span>
+                          </a>
+                        </li>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </ul>
+                </li>
+              <?php endforeach; ?>
             </ul>
           </li>
           
