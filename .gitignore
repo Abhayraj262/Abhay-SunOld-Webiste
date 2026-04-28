@@ -1,2 +1,7 @@
-public_html/__lp.sunconsultants.co.in.zip
-public_html/error_log
+# Log files (grow unbounded; GitHub rejects blobs > 100 MB)
+error_log
+**/error_log
+
+# Large local archives / backups — do not commit
+*.zip
+__lp.sunconsultants.co.in.zip
