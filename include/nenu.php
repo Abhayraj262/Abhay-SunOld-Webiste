@@ -85,12 +85,15 @@ $nav_services_items = array_values(array_filter($nav_services_items, static func
             </a>
             <ul id="nav-services-panel" class="nav-services-panel" role="menu" aria-labelledby="nav-services-trigger">
               <?php foreach ($nav_services_items as $nav_service_row) :
-                  $href = nav_services_resolve_href((string) ($nav_service_row['slug'] ?? ''));
+                  $slug = (string) ($nav_service_row['slug'] ?? '');
+                  $href = ($slug === 'APEDARegistration')
+                      ? 'https://sunconsultants.co.in/APEDARegistration.php'
+                      : nav_services_resolve_href($slug);
                   $href_esc = htmlspecialchars($href, ENT_QUOTES, 'UTF-8');
                   $title_esc = htmlspecialchars((string) ($nav_service_row['title'] ?? ''), ENT_QUOTES, 'UTF-8');
                   ?>
                   <li role="none"><a role="menuitem" class="nav-services-panel__link" href="<?= $href_esc ?>"><?= $title_esc ?></a></li>
-              <?php endforeach; ?>
+              <?php endforeach; ?> 
             </ul>
           </li>
           

@@ -26,6 +26,7 @@ return [
     ['title' => 'CB Certification', 'slug' => 'cb-certification-consultants'],
     ['title' => 'WPC ETA', 'slug' => 'eta-certification-consultants'],
     ['title' => 'WPC', 'slug' => 'wpc-certification-consultants'],
+    ['title' => 'APEDA Registration', 'slug' => 'APEDARegistration'],
     ['title' => 'ICAT Certificate in India', 'slug' => 'icat-certificate-india'],
     ['title' => 'STQC Certificate', 'slug' => 'stqc-certificate-india'],
 ];
