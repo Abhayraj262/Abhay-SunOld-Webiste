@@ -343,7 +343,7 @@ font-size: 18px !important;}
       <div class="col-sm-9" >
 
 
-
+<!-- 
           <div class="wrap">
 
             <div class="banner">
@@ -356,7 +356,7 @@ font-size: 18px !important;}
 
             </div>
 
-          </div>
+          </div> -->
 
           <div class="one">
             <h1 style="font-size: 28px;">What is APEDA Registration</h1>
