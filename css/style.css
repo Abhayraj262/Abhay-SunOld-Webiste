@@ -1213,7 +1213,7 @@ ul.navbar-nav>li>a {
 }
 
 .dropdown-menu-1 {
-    text-align: left;
+    text-align: left; 
     background: rgb(24, 23, 23);
     z-index: 100;
     min-width: 200px;
@@ -5227,6 +5227,148 @@ span {
     }
     .study{font-size: 25px;}
     .imag{padding: 23px;}
+}
+
+
+
+
+/* Fallback: horizontal top-level nav on desktop (Impact rules live in assets/css/main.css — load it after this file) */
+@media (min-width: 1280px) {
+    #header nav#navbar.navbar > ul {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        list-style: none !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    #header nav#navbar.navbar > ul > li {
+        list-style: none !important;
+        position: relative;
+    }
+}
+
+
+
+
+/* ============================================================
+   Navbar SERVICES — click toggle, multi-column panel (nav-services-dropdown.js)
+   ============================================================ */
+
+.navbar li.dropdown.nav-services > ul.nav-services-panel {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li.dropdown.nav-services .nav-services-panel__link {
+    display: block;
+    padding: 0.42rem 0.65rem;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #1f7d72 !important;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.navbar li.dropdown.nav-services .nav-services-panel__link:hover,
+.navbar li.dropdown.nav-services .nav-services-panel__link:focus {
+    color: #047a6f !important;
+    background-color: rgba(0, 121, 107, 0.08);
+    outline: none;
+}
+
+.navbar li.dropdown.nav-services > ul.nav-services-panel > li {
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}
+
+@media (min-width: 1280px) {
+
+    .navbar li.dropdown.nav-services > ul.nav-services-panel {
+        display: grid !important;
+        position: absolute !important;
+        grid-template-columns: repeat(3, minmax(12.5rem, 1fr));
+        gap: 0.25rem 0.6rem;
+        align-content: start;
+        min-width: min(53rem, calc(100vw - 3rem));
+        max-width: min(94vw, 56rem);
+        max-height: min(72vh, 28rem);
+        overflow-x: hidden;
+        overflow-y: auto;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        margin-left: 0 !important;
+        top: calc(100% + 8px) !important;
+        padding: 14px 16px;
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.14);
+        border-radius: 8px;
+        z-index: 1000;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .navbar li.dropdown.nav-services.nav-services-is-open > ul.nav-services-panel {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .navbar li.dropdown.nav-services:hover:not(.nav-services-is-open) > ul.nav-services-panel {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
+
+@media (max-width: 1279px) {
+
+    .navbar li.dropdown.nav-services > ul.nav-services-panel {
+        display: none;
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100%;
+        max-width: none;
+        max-height: min(60vh, 22rem);
+        overflow-y: auto;
+        margin: 8px 12px 10px 12px;
+        padding: 8px 6px;
+        background: rgba(0, 90, 80, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        box-shadow: none;
+    }
+
+    .navbar li.dropdown.nav-services > ul.nav-services-panel.dropdown-active,
+    .navbar li.dropdown.nav-services.nav-services-is-open > ul.nav-services-panel {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .navbar li.dropdown.nav-services .nav-services-panel__link {
+        color: #e8f7f4 !important;
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .navbar li.dropdown.nav-services .nav-services-panel__link:hover,
+    .navbar li.dropdown.nav-services .nav-services-panel__link:focus {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.1);
+    }
 }
 
 
