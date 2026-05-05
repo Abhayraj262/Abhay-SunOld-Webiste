@@ -42,6 +42,12 @@ RewriteOptions inherit
         
     RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ /404.php [R=404,L]
 
+    # Canonical SEO path → existing implementation (ERDA page meta uses /erda-certificate-india)
+    RewriteRule ^apeda-registration-india/?$ APEDARegistration.php [NC,L]
+    RewriteRule ^tac-certificate-india/?$ TACCertificate.php [NC,L]
+    RewriteRule ^erda-certificate-india/?$ ERDAandERDACertificate.php [NC,L]
+    RewriteRule ^saso-saber-certification/?$ SASOCertificate.php [NC,L]
+
     # Serve .php files without the .php extension
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.php -f

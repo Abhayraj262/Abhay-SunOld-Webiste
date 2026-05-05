@@ -26,7 +26,10 @@ return [
     ['title' => 'CB Certification', 'slug' => 'cb-certification-consultants'],
     ['title' => 'WPC ETA', 'slug' => 'eta-certification-consultants'],
     ['title' => 'WPC', 'slug' => 'wpc-certification-consultants'],
-    ['title' => 'APEDA Registration', 'slug' => 'APEDARegistration'],
-    ['title' => 'ICAT Certificate in India', 'slug' => 'icat-certificate-india'],
-    ['title' => 'STQC Certificate', 'slug' => 'stqc-certificate-india'],
+    ['title' => 'APEDA Registration', 'slug' => 'APEDARegistration', 'url' => 'https://sunconsultants.co.in/apeda-registration-india'],
+    ['title' => 'TAC Certificate', 'slug' => 'TACCertificate', 'url' => 'https://sunconsultants.co.in/tac-certificate-india'],
+    ['title' => 'SASO / SABER Certificate', 'slug' => 'SASOCertificate', 'url' => 'https://sunconsultants.co.in/saso-saber-certification'],
+    ['title' => 'ICAT Certificate in India', 'slug' => 'ICATCertificate', 'url' => 'https://sunconsultants.co.in/icat-certificate-india'],
+    ['title' => 'ERDA and ERDA Certificate', 'slug' => 'ERDAandERDACertificate', 'url' => 'https://sunconsultants.co.in/erda-certificate-india'],
+    ['title' => 'STQC Certificate', 'slug' => 'stqc-certificate-india', 'url' => 'https://sunconsultants.co.in/stqc-certificate-india'],
 ];
