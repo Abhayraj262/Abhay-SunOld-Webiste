@@ -21,7 +21,7 @@
   <meta name="description" itemprop="description" content="Expert BIS Scheme X certification services for pumps, motors, machinery, switchgear, cranes & electrical equipment in India. Achieve compliance and accelerate your market entry." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Sun Consultants & Engineers" />
-  <meta property="og:url" content="https://bis-certifications.com/bis-scheme-x-certification-india" />
+  <meta property="og:url" content="https://sunconsultants.co.in/bis-scheme-x-certification-india" />
   <meta property="og:site_name" content="Sun Consultants & Engineers" />
   <meta property="og:title" content="BIS Scheme X Certification (Omnibus Technical Regulation) for Industrial & Electrical Goods like Switchgear, Cranes, CNC machines etc.">
   <meta property="og:description" content="Expert guidance for BIS Scheme X (Omnibus Technical Regulation) compliance in India. Certify your switchgear, machinery, cranes, and all electrical equipment to gain market access effectively" />
@@ -36,7 +36,7 @@
   <meta name="twitter:image" content="/Gallery/Scheme-X-Certification.png" />
   <meta name="twitter:image:alt" content="BIS Scheme X certification services" />
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://bis-certifications.com/bis-scheme-x-certification-india" />
+  <link rel="canonical" href="https://sunconsultants.co.in/bis-scheme-x-certification-india" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png">

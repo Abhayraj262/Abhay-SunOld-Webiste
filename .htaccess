@@ -1,24 +1,24 @@
 RewriteOptions inherit
 
-# HTTPS, www redirects, and 302 redirects (production only - requires mod_expires)
-<IfModule mod_expires.c>
+# Legacy URLs → permanent redirects (301 passes equity; 302 did not)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^bis-licence-consultants/?$ /bis-registration-certification [R=301,L]
+    RewriteRule ^lmpc-certification/?$ /lmpc-certification-consultants [R=301,L]
+    RewriteRule ^cdsco/?$ /cdsco-registration-certification [R=301,L]
+    RewriteRule ^bis-certification/?$ /bis-registration-certification [R=301,L]
+    RewriteRule ^peso-certification/?$ /peso-certification-consultants [R=301,L]
+    RewriteRule ^bis-\(crs\)-registration-for-elect/?$ /bis-crs-registration-for-electronic [R=301,L]
+    RewriteRule ^impc-certification-consultants/?$ /lmpc-certification-consultants [R=301,L]
+</IfModule>
 
-    RewriteEngine on
-     Redirect 302 /bis-licence-consultants /bis-registration-certification
-     Redirect 302 /lmpc-certification /lmpc-certification-consultants
-     Redirect 302 /cdsco /cdsco-registration-certification
-     Redirect 302 /bis-certification /bis-registration-certification
-     Redirect 302 /peso-certification /peso-certification-consultants
-     Redirect 302 /bis-(crs)-registration-for-elect /bis-crs-registration-for-elects
-
-    # Force HTTPS
+# HTTPS + non-www (must not depend on mod_expires)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  
-    # Non-www to www redirect
-    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
-
 </IfModule>
 
 # Clean URL rewrite rules (works on both localhost and production)
@@ -32,9 +32,7 @@ RewriteOptions inherit
     # Notifications path
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ notifications.php?path=$1 [NC,L]
-        
-    RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ /404.php [R=404,L]
+    RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ notifications.php?path=$1 [NC,L,QSA]
 
     # Canonical SEO path → existing implementation (ERDA page meta uses /erda-certificate-india)
     RewriteRule ^apeda-registration-india/?$ APEDARegistration.php [NC,L]

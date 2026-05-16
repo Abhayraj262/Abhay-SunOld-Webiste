@@ -1,3 +1,7 @@
+<?php
+http_response_code(404);
+header('X-Robots-Tag: noindex, nofollow', true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +32,7 @@
     content="Ready for BIS Certification. Get BIS certificate with the assistance of our experts. Apply for BIS certificate today." />
   <meta name="twitter:image" content="https://sunconsultants.co.in/img/isi-msrk-img/LMPC-11.jpg" />
   <meta name="twitter:image:alt" content="LMPC Certification" />
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, nofollow">
 
 
 

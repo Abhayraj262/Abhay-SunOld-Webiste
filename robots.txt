@@ -1,4 +1,7 @@
+# Production: allow Googlebot to crawl public pages
 User-agent: *
 Allow: /
+
+Disallow: /notifications/admin/
 
 Sitemap: https://sunconsultants.co.in/sitemap.xml
