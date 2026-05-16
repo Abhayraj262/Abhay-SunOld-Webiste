@@ -61,6 +61,8 @@ $row = $result->fetch_assoc();
   <link rel="stylesheet" href="https://sunconsultants.co.in/plugins/colorbox/colorbox.css">
   <!-- Template styles-->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <!-- stylefro.css -->
   <link rel="stylesheet" href="https://sunconsultants.co.in/css/stylefro.css">
   <!--resposive  -->

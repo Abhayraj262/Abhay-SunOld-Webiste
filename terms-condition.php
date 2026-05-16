@@ -22,6 +22,7 @@
     rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
   <link rel="canonical" href="https://sunconsultants.co.in/terms-condition" />
  
  <style>

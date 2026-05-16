@@ -291,8 +291,9 @@ section {
 .header {
   transition: all 0.5s;
   z-index: 997;
-  height: 90px;
+  height: 102px;
   background-color: #00796b;
+  overflow: visible;
 }
 
 .header.sticked {
@@ -300,16 +301,32 @@ section {
   top: 0;
   right: 0;
   left: 0;
-  height: 70px;
+  height: 78px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
+.header .logo {
+  flex-shrink: 0;
+  line-height: 0;
+}
 
-.header .logo img {
-  max-height: 85px;
-  /* margin-right: 10px; */
+.header .logo img,
+.header .logo .navbar-logo-img {
+  height: 100px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: 100px !important;
+  object-fit: contain;
   margin-left: -7px;
-  margin-top: 8px;
+  margin-top: 9px;
+}
+
+.header.sticked .logo img,
+.header.sticked .logo .navbar-logo-img {
+  height: 72px !important;
+  max-width: none !important;
+  max-height: 72px !important;
+  margin-top: 0;
 }
 
 .header .logo h1 {
@@ -326,7 +343,7 @@ section {
 }
 
 .sticked-header-offset {
-  margin-top: 70px;
+  margin-top: 78px;
 }
 
 section {
@@ -3508,8 +3525,9 @@ section {
 .header {
   transition: all 0.5s;
   z-index: 997;
-  height: 90px;
+  height: 102px;
   background-color: #00796b;
+  overflow: visible;
 }
 
 .header.sticked {
@@ -3517,16 +3535,32 @@ section {
   top: 0;
   right: 0;
   left: 0;
-  height: 70px;
+  height: 78px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
+.header .logo {
+  flex-shrink: 0;
+  line-height: 0;
+}
 
-.header .logo img {
-  max-height: 102px !important;
-  /* margin-right: 10px; */
+.header .logo img,
+.header .logo .navbar-logo-img {
+  height: 100px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: 100px !important;
+  object-fit: contain;
   margin-left: -7px;
-  margin-top: 16px;
+  margin-top: 9px;
+}
+
+.header.sticked .logo img,
+.header.sticked .logo .navbar-logo-img {
+  height: 72px !important;
+  max-width: none !important;
+  max-height: 72px !important;
+  margin-top: 0;
 }
 
 .header .logo h1 {
@@ -3543,7 +3577,7 @@ section {
 }
 
 .sticked-header-offset {
-  margin-top: 70px;
+  margin-top: 78px;
 }
 
 section {

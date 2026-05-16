@@ -34,6 +34,8 @@
   <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
   <!-- Template styles-->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/main.css">
   
       <!-- Google tag (gtag.js) Google Analytics tracking-->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163953232-1"></script>
@@ -141,6 +143,7 @@
 
   <!-- Template custom -->
   <script src="js/script.js"></script>
+  <script src="assets/js/main.js"></script>
 
   </div><!-- Body inner end -->
   <!-- sender-silder shose js- -->

@@ -35,6 +35,8 @@
   <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
   <!-- Template styles-->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/main.css">
   <!-- Google tag (gtag.js) Google Analytics tracking-->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163953232-1"></script>
   <script>

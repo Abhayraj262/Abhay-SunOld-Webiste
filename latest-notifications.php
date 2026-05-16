@@ -66,6 +66,8 @@ if ($conn->connect_error) {
 	<link rel="stylesheet" href="plugins/colorbox/colorbox.css">
 	<!-- Template styles-->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" href="assets/css/main.css">
 	<!-- stylefro.css -->
 	<link rel="stylesheet" href="css/stylefro.css">
 	<!--resposive  -->

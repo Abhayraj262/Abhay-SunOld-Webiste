@@ -924,7 +924,7 @@ ul.navbar-nav>li.active>a {
 
 /*-- Logo --*/
 
-.logo img {
+.header-one .logo img {
     width: auto;
     height: 35px;
 }
