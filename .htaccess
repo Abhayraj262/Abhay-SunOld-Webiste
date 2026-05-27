@@ -1,61 +1,1254 @@
 RewriteOptions inherit
 
-# Legacy URLs → permanent redirects (301 passes equity; 302 did not)
+# =============================================================================
+# CROSS-DOMAIN 301 REDIRECTS — sunconsultants.co.in → bis-certifications.com
+# Source: Website Links - Sheet2.csv + legacy aliases
+# -----------------------------------------------------------------------------
+# Layer 1: THE_REQUEST — raw browser URL before LiteSpeed maps to .php
+# Layer 2: REQUEST_URI — fallback for clean URLs / trailing slashes / .php
+# Keep both layers BEFORE HTTPS enforcement and internal PHP rewrites.
+# =============================================================================
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^bis-licence-consultants/?$ /bis-registration-certification [R=301,L]
-    RewriteRule ^lmpc-certification/?$ /lmpc-certification-consultants [R=301,L]
-    RewriteRule ^cdsco/?$ /cdsco-registration-certification [R=301,L]
-    RewriteRule ^bis-certification/?$ /bis-registration-certification [R=301,L]
-    RewriteRule ^peso-certification/?$ /peso-certification-consultants [R=301,L]
-    RewriteRule ^bis-\(crs\)-registration-for-elect/?$ /bis-crs-registration-for-electronic [R=301,L]
-    RewriteRule ^impc-certification-consultants/?$ /lmpc-certification-consultants [R=301,L]
+    RewriteBase /
+
+    # ---------- Layer 1: THE_REQUEST priority ----------
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+?(\?|\s) [NC]
+    RewriteRule ^$ https://bis-certifications.com/ [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+exhibitions-and-seminar(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/seminars-and-exhibitions [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+cdsco-registration-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+fmcs-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-to-bis-certification-for-foreign-manufacturers-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+isi-mark-registration-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-to-bis-certification-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+epr-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+lmpc-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+plastic-waste-management-registration(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/epr-certificate-for-plastic-waste-management-pwm [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+legal-metrology-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-legal-metrology-or-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-registration-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-crs-registration-for-electronic(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+peso-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+tec-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-tec-certificate-mtcte [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+wpc-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+rohs-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/restriction-of-hazardous-substance-rohs-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bee-registration-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bee-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+ce-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/ce-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+emi-emc-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/emi-emc-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+cb-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/cb-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+latest-notifications(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+contact-us(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/contact [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+terms-condition(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/terms-and-conditions [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+privacy-policy(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/privacy-policy [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+about-us(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/about [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-crs-registration-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+peso-approval(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+plastic-waste-management-authorization(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/epr-certificate-for-plastic-waste-management-pwm [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloys-forging-stock(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-forging-stock-and-forgings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/h-acid(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-h-acid [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/k-acid(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-k-acid [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/vinyl-sulphone(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-vinyl-sulphone [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electric-fence-energizers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-fence-energizers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/clothes-washing-machines(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-clothes-washing-machines [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/gypsum-plaster-boards(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-gypsum-plaster-boards [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-alloy-irrigation-tubes-welded(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tubes-for-irrigation-purposes-welded-tubes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/bis-aluminium-alloy-tubes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tube-for-irrigation-purposes-extruded-tube [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-alloy-tube-irrigation-purposes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tube-for-irrigation-purposes-extruded-tube [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/ec-grade-aluminium-rod(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ec-grade-aluminium-rod-produced-by-continuous-casting-and-rolling [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-bars-rods-sections(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-bars-rods-and-sections [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloys-forging-stock-and-forging(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-forging-stock-and-forgings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloy-plate-engineering(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-plate-for-general-engineering-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloy-sheet-strip(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-sheet-and-strip [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloy-wire(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-wire [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloy-rivet-stock(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-rivet-stock [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-alloy-electrical-applications(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-for-electrical-applications [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-and-aluminium-alloy-foil(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-and-aluminium-alloy-foil [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-composite-panel(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-composite-panel [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrought-aluminium-extruded-round-tube-hollow(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-extruded-round-tube-and-hollow [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-tubes-and-hollows(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-wire-for-electrical-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminium-utensils(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-for-manufacture-of-utensils [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/corrugated-aluminium-sheet(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-corrugated-aluminium-sheet [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/alloy-forging-stock-and-forgings(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-forging-stock-and-forgings-alloy-24345-for-aerospace-applications [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/solar-flat-plate-collector(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-flat-plate-collector [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/solar-water-heating-system(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-water-heating-system [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/storage-water-tank(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-storage-water-tank [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/flat-woven-webbing-slings(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-flat-woven-webbing-slings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/textiles-manila-ropes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-textiles-manila-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-ropes-polyester(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyester [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/synthetic-fibre-ropes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-synthetic-fibre-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/mixe-polyolefin-fibre-ropes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-mixed-polyolefin-fibre-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/steel-wire-ropes-fibre-main-cores(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-wire-ropes-fibre-main-cores [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-ropes-polyamide(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyamide [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-ropes-polypropylene(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polypropylene [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-ropes-and-polyester(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyethylene [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-ropes-dual-fibres(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-dual-fibres [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/countersunk-flat-head-screws-gradeA-part2(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-countersunk-flat-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a-part-2-steel-screws-of-property-class-88-stainless-steel-screws-and-non-ferrous-metal-screws [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/wrapped-steel-cylinder-pipes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bar-or-wire-wrapped-steel-cylinder-pipes-with-mortar-lining-and-coating-including-specials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/deformed-stainless-steel-bars-wires(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-high-strength-deformed-stainless-steel-bars-and-wires [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/steel-ipe-flanges(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-pipe-flanges [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/stainless-steel-tubes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-stainless-steel-tubes-for-the-food-and-beverage-industry [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/chipboard-screws(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-chipboard-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-countersunk-wood-screws(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-countersunk-head-wood-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-pan-head-screws(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-1-pan-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-screws-raised-countersunk(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-3-raised-countersunk-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-tapping-screw-part-3-raised-countersunk-oval-head(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screw-part-3-raised-countersunk-oval-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-tapping-screws-flat-head(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screws-part-2-countersunk-flat-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cross-recessed-tapping-screws-pan-head(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screws-part-1-pan-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/drywall-screws-specification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-drywall-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fasteners-cross-recessed-drilling-screws-countersunk-head(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-2-countersunk-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fasteners-hexagon-washer-head(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-hexagon-washer-head-drilling-screws-with-tapping-screw-thread [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/flat-head-HZ-screws-part1(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-countersunk-flat-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a-part-1-steel-screws-of-property-class-48 [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/gypsum-based-building-materials(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-gypsum-based-building-materials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/raised-countersunk-flat-head-screws-type-hz-grade-a(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-raised-countersunk-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/type-h-z-cross-recess(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pan-head-screws-with-type-h-or-type-z-cross-recess-product-grade-a [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/flux-cored-solder-wire(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-flux-cored-solder-wire [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/chain-pipe-wrenches(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-chain-pipe-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/open-ended-slugging-wrenches-spanners(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-open-ended-slugging-wrenches-spanners [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/slugging-wrenches(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ring-slugging-wrenches-spanners [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/single-ended-open-jaw-adjustable-wrenches(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-single-ended-open-jaw-adjustable-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/open-jaw-wrenches(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-open-jaw-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/ring-wrenches(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ring-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/pipe-wrenches-general-purpose(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pipe-wrenches-general-purpose [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/pipe-wrenches-heavy-duty(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pipe-wrenches-heavy-duty [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/combination-side-cutting-pliers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-combination-side-cutting-pliers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/safety-household-commercial-electrical-appliances(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-safety-of-household-commercial-and-similar-electrical-appliances [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/hinges(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hinges [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/steel-wires-strands-nylonn-wire-ropes-wire-mesh(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-wires-or-strands-nylon-or-wire-ropes-and-wire-mesh [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/hdpe-pp-woven-sacks-for-packaging-fertilizers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hdpe-pp-woven-sacks-for-packaging-fertilizers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/pp-hdpe-laminated-woven-sacks-mail-sorting-storage-transport-distribution(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pp-hdpe-laminated-woven-sacks-for-mail-sorting-storage-transport-and-distribution [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/pp-woven-laminated-block-bottom-valve-sacks-cement(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-polypropylene-pp-woven-laminated-block-bottom-valve-sacks-for-packaging-of-50-kg-cement [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/chains-sprockets(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-precision-roller-and-bush-chains-attachments-and-associated-chains-sprockets [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/nickel-powder(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-nickel-powder [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/qco-copper(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-copper [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cast-aluminium-and-alloys(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cast-aluminium-and-its-alloys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/high-purity-primary-aluminum-ingot(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-high-purity-primary-aluminum-ingot [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminum-alloy-ingots-remelting(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminum-alloy-ingots-for-remelting [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/primary-aluminium-ingots-remelting(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-primary-aluminium-ingots-for-remelting [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/aluminum-ingots-billets-wire-bars(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminum-ingots-billets-and-wire-bars [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/telescopic-ball-bearing-drawer-slide(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-telescopic-ball-bearing-drawer-slides [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/copper-products(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-copper-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/agro-textiles(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-agro-textiles [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/plywood-for-general-purposes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-for-general-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/flush-door-shutters(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wooden-flush-door-shutters-solid-core-type-plywood-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/marine-plywood(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-marine-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fire-retardant-plywood(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fire-retardant-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/Veneered-decorative-plywood(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-veneered-decorative-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/particle-board-hardboard-panels(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-particle-board-and-hardboard-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/plywood-face-panels(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/fibre-hardboard-face-panels(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-hardboard-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/plywood-for-concrete-shuttering-works(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-for-concrete-shuttering-works [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/structural-plywood(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-structural-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/v-belt-order(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-v-belts [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/glass-fibre-reinforced-gypsum-panels(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-glass-fibre-reinforced-gypsum-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/reinforced-gypsum-plaster-boards-tiles(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-reinforced-gypsum-plaster-boards-and-ceiling-tiles [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/air-cooler-and-air-filters(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-evaporative-air-coolers-desert-coolers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/asbestos-fibre-cement-based-products(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-asbestos-or-fibre-cement-based-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/diesel-engines-nox-reduction-agenta(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-diesel-engines-nox-reduction-agent-aus-32-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliance-commerial-dispensing-and-vending(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-for-commercial-dispensing-and-vending [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliance-domestic-clothes-washing(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-for-domestic-clothes-washing [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliance-fans(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-fans [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliances-for-domestic-water-heating(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-water-heaters [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliances-for-skin-hair-care(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliances-for-skin-or-hair-care [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-appliances-kitchen(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliances-for-kitchen [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/water-meters-accessories(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-water-meter-and-accessories [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/poly-vinyl-chloride-homopolymers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-poly-vinyl-chloride-pvc-homopolymers-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/specification-for-polypropylene-materials-moulding-extrusion(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-polypropylene-pp-materials-for-moulding-and-extrusion [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/baby-diaper(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-baby-diaper [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/bedsheet-and-pillow-cover(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bedsheet-and-pillow-cover [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/dental-bib-napkin(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-dental-bib-napkins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/drinking-water-cooler(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-self-contained-drinking-water-cooler [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/reusable-sanitary-pad-sanitary-napkin-period-panties(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-reusable-sanitary-pad-sanitary-napkin-period-panties [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/sanitary-napkins(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-sanitary-napkins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/shoe-covers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-shoe-covers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electrical-accessories(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-accessories [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/laboratory-glassware(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-laboratory-glassware [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/cycle-and-rickshaw-tyres-and-tubes(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cycle-and-rickshaw-tyres-tubes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/safe-deposit-locker-cabinets-key-locks(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-safe-deposit-locker-cabinets [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/woven-sacks-packaging-Polymer-material(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hdpe-pp-woven-sacks-for-packaging-of-25-kg-polymer-materials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/legal-Metrology-material-measures-Length(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-legal-metrology-material-measures-of-length [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/door-Fittings(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-door-fittings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/drums-and-Tins(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-drums-and-tins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/helmet-Police-Force-Civil-Defence-personnel(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-helmets-for-police-force-civil-defence-and-personal-protection [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/bottled-water-despensers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bottled-water-dispensers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/implementation-tables-and-desk-specification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-implementation-of-is-17633-2022-specification-for-tables-and-desks [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/rubber-gskets-pressure-cookers(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-rubber-gaskets-for-pressure-cookers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/electric-cable-photovoltic(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-cable-for-photovoltaic [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/primary-lead(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-primary-lead [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/refined-nickel(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-refined-nickel [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/tin-Ingot(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-tin-ingot [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/refined-zinc(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-refined-zinc [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/teel-and-steel-products(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-steel-and-steel-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-licence-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+cdsco(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-\(crs\)-registration-for-elect(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+lmpc-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+impc-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+peso-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+notifications/solar-power-dc-cable(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-dc-cable-and-fire-survival-cable [R=301,L,NC]
+
+    # ---------- Layer 2: REQUEST_URI fallback ----------
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^$ https://bis-certifications.com/ [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^exhibitions-and-seminar(\.php)?/?$ https://bis-certifications.com/seminars-and-exhibitions [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^cdsco-registration-certification(\.php)?/?$ https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^fmcs-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-to-bis-certification-for-foreign-manufacturers-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^isi-mark-registration-certification(\.php)?/?$ https://bis-certifications.com/a-guide-to-bis-certification-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^epr-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^lmpc-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^plastic-waste-management-registration(\.php)?/?$ https://bis-certifications.com/epr-certificate-for-plastic-waste-management-pwm [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^legal-metrology-certification-consultants(\.php)?/?$ https://bis-certifications.com/what-is-legal-metrology-or-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-registration-certification(\.php)?/?$ https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-crs-registration-for-electronic(\.php)?/?$ https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^peso-certification-consultants(\.php)?/?$ https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^tec-certification-consultants(\.php)?/?$ https://bis-certifications.com/information-about-tec-certificate-mtcte [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^wpc-certification-consultants(\.php)?/?$ https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^rohs-certification-consultants(\.php)?/?$ https://bis-certifications.com/restriction-of-hazardous-substance-rohs-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bee-registration-certification(\.php)?/?$ https://bis-certifications.com/bee-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^ce-certification-consultants(\.php)?/?$ https://bis-certifications.com/ce-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^emi-emc-certification-consultants(\.php)?/?$ https://bis-certifications.com/emi-emc-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^cb-certification-consultants(\.php)?/?$ https://bis-certifications.com/cb-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^latest-notifications(\.php)?/?$ https://bis-certifications.com/bis-qco-updates [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^contact-us(\.php)?/?$ https://bis-certifications.com/contact [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^terms-condition(\.php)?/?$ https://bis-certifications.com/terms-and-conditions [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^privacy-policy(\.php)?/?$ https://bis-certifications.com/privacy-policy [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^about-us(\.php)?/?$ https://bis-certifications.com/about [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-crs-registration-certification(\.php)?/?$ https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^peso-approval(\.php)?/?$ https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^plastic-waste-management-authorization(\.php)?/?$ https://bis-certifications.com/epr-certificate-for-plastic-waste-management-pwm [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloys-forging-stock(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-forging-stock-and-forgings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/h-acid(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-h-acid [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/k-acid(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-k-acid [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/vinyl-sulphone(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-vinyl-sulphone [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electric-fence-energizers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-fence-energizers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/clothes-washing-machines(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-clothes-washing-machines [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/gypsum-plaster-boards(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-gypsum-plaster-boards [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-alloy-irrigation-tubes-welded(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tubes-for-irrigation-purposes-welded-tubes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/bis-aluminium-alloy-tubes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tube-for-irrigation-purposes-extruded-tube [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-alloy-tube-irrigation-purposes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-tube-for-irrigation-purposes-extruded-tube [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/ec-grade-aluminium-rod(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ec-grade-aluminium-rod-produced-by-continuous-casting-and-rolling [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-bars-rods-sections(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-bars-rods-and-sections [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloys-forging-stock-and-forging(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-forging-stock-and-forgings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloy-plate-engineering(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-plate-for-general-engineering-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloy-sheet-strip(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-sheet-and-strip [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloy-wire(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-wire [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloy-rivet-stock(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-rivet-stock [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-alloy-electrical-applications(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloy-for-electrical-applications [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-and-aluminium-alloy-foil(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-and-aluminium-alloy-foil [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-composite-panel(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-composite-panel [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrought-aluminium-extruded-round-tube-hollow(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-extruded-round-tube-and-hollow [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-tubes-and-hollows(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-wire-for-electrical-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminium-utensils(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wrought-aluminium-and-aluminium-alloys-for-manufacture-of-utensils [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/corrugated-aluminium-sheet(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-corrugated-aluminium-sheet [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/alloy-forging-stock-and-forgings(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminium-alloy-forging-stock-and-forgings-alloy-24345-for-aerospace-applications [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/solar-flat-plate-collector(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-flat-plate-collector [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/solar-water-heating-system(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-water-heating-system [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/storage-water-tank(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-storage-water-tank [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/flat-woven-webbing-slings(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-flat-woven-webbing-slings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/textiles-manila-ropes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-textiles-manila-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-ropes-polyester(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyester [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/synthetic-fibre-ropes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-synthetic-fibre-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/mixe-polyolefin-fibre-ropes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-mixed-polyolefin-fibre-ropes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/steel-wire-ropes-fibre-main-cores(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-wire-ropes-fibre-main-cores [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-ropes-polyamide(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyamide [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-ropes-polypropylene(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polypropylene [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-ropes-and-polyester(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-polyethylene [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-ropes-dual-fibres(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-ropes-dual-fibres [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/countersunk-flat-head-screws-gradeA-part2(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-countersunk-flat-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a-part-2-steel-screws-of-property-class-88-stainless-steel-screws-and-non-ferrous-metal-screws [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/wrapped-steel-cylinder-pipes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bar-or-wire-wrapped-steel-cylinder-pipes-with-mortar-lining-and-coating-including-specials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/deformed-stainless-steel-bars-wires(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-high-strength-deformed-stainless-steel-bars-and-wires [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/steel-ipe-flanges(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-pipe-flanges [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/stainless-steel-tubes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-stainless-steel-tubes-for-the-food-and-beverage-industry [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/chipboard-screws(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-chipboard-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-countersunk-wood-screws(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-countersunk-head-wood-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-pan-head-screws(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-1-pan-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-screws-raised-countersunk(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-3-raised-countersunk-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-tapping-screw-part-3-raised-countersunk-oval-head(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screw-part-3-raised-countersunk-oval-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-tapping-screws-flat-head(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screws-part-2-countersunk-flat-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cross-recessed-tapping-screws-pan-head(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cross-recessed-tapping-screws-part-1-pan-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/drywall-screws-specification(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-drywall-screws-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fasteners-cross-recessed-drilling-screws-countersunk-head(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-cross-recessed-drilling-screws-with-tapping-screw-thread-part-2-countersunk-head [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fasteners-hexagon-washer-head(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fasteners-hexagon-washer-head-drilling-screws-with-tapping-screw-thread [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/flat-head-HZ-screws-part1(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-countersunk-flat-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a-part-1-steel-screws-of-property-class-48 [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/gypsum-based-building-materials(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-gypsum-based-building-materials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/raised-countersunk-flat-head-screws-type-hz-grade-a(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-raised-countersunk-head-screws-common-head-style-with-type-h-or-type-z-cross-recess-product-grade-a [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/type-h-z-cross-recess(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pan-head-screws-with-type-h-or-type-z-cross-recess-product-grade-a [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/flux-cored-solder-wire(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-flux-cored-solder-wire [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/chain-pipe-wrenches(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-chain-pipe-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/open-ended-slugging-wrenches-spanners(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-open-ended-slugging-wrenches-spanners [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/slugging-wrenches(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ring-slugging-wrenches-spanners [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/single-ended-open-jaw-adjustable-wrenches(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-single-ended-open-jaw-adjustable-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/open-jaw-wrenches(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-open-jaw-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/ring-wrenches(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-ring-wrenches [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/pipe-wrenches-general-purpose(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pipe-wrenches-general-purpose [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/pipe-wrenches-heavy-duty(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pipe-wrenches-heavy-duty [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/combination-side-cutting-pliers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-combination-side-cutting-pliers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/safety-household-commercial-electrical-appliances(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-safety-of-household-commercial-and-similar-electrical-appliances [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/hinges(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hinges [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/steel-wires-strands-nylonn-wire-ropes-wire-mesh(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-steel-wires-or-strands-nylon-or-wire-ropes-and-wire-mesh [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/hdpe-pp-woven-sacks-for-packaging-fertilizers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hdpe-pp-woven-sacks-for-packaging-fertilizers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/pp-hdpe-laminated-woven-sacks-mail-sorting-storage-transport-distribution(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-pp-hdpe-laminated-woven-sacks-for-mail-sorting-storage-transport-and-distribution [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/pp-woven-laminated-block-bottom-valve-sacks-cement(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-polypropylene-pp-woven-laminated-block-bottom-valve-sacks-for-packaging-of-50-kg-cement [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/chains-sprockets(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-precision-roller-and-bush-chains-attachments-and-associated-chains-sprockets [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/nickel-powder(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-nickel-powder [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/qco-copper(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-copper [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cast-aluminium-and-alloys(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cast-aluminium-and-its-alloys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/high-purity-primary-aluminum-ingot(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-high-purity-primary-aluminum-ingot [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminum-alloy-ingots-remelting(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminum-alloy-ingots-for-remelting [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/primary-aluminium-ingots-remelting(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-primary-aluminium-ingots-for-remelting [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/aluminum-ingots-billets-wire-bars(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-aluminum-ingots-billets-and-wire-bars [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/telescopic-ball-bearing-drawer-slide(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-telescopic-ball-bearing-drawer-slides [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/copper-products(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-copper-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/agro-textiles(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-agro-textiles [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/plywood-for-general-purposes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-for-general-purposes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/flush-door-shutters(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-wooden-flush-door-shutters-solid-core-type-plywood-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/marine-plywood(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-marine-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fire-retardant-plywood(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fire-retardant-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/Veneered-decorative-plywood(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-veneered-decorative-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/particle-board-hardboard-panels(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-particle-board-and-hardboard-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/plywood-face-panels(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/fibre-hardboard-face-panels(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-fibre-hardboard-face-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/plywood-for-concrete-shuttering-works(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-plywood-for-concrete-shuttering-works [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/structural-plywood(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-structural-plywood [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/v-belt-order(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-v-belts [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/glass-fibre-reinforced-gypsum-panels(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-glass-fibre-reinforced-gypsum-panels [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/reinforced-gypsum-plaster-boards-tiles(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-reinforced-gypsum-plaster-boards-and-ceiling-tiles [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/air-cooler-and-air-filters(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-evaporative-air-coolers-desert-coolers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/asbestos-fibre-cement-based-products(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-asbestos-or-fibre-cement-based-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/diesel-engines-nox-reduction-agenta(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-diesel-engines-nox-reduction-agent-aus-32-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliance-commerial-dispensing-and-vending(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-for-commercial-dispensing-and-vending [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliance-domestic-clothes-washing(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-for-domestic-clothes-washing [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliance-fans(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliance-fans [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliances-for-domestic-water-heating(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-water-heaters [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliances-for-skin-hair-care(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliances-for-skin-or-hair-care [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-appliances-kitchen(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-appliances-for-kitchen [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/water-meters-accessories(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-water-meter-and-accessories [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/poly-vinyl-chloride-homopolymers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-poly-vinyl-chloride-pvc-homopolymers-specification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/specification-for-polypropylene-materials-moulding-extrusion(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-polypropylene-pp-materials-for-moulding-and-extrusion [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/baby-diaper(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-baby-diaper [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/bedsheet-and-pillow-cover(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bedsheet-and-pillow-cover [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/dental-bib-napkin(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-dental-bib-napkins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/drinking-water-cooler(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-self-contained-drinking-water-cooler [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/reusable-sanitary-pad-sanitary-napkin-period-panties(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-reusable-sanitary-pad-sanitary-napkin-period-panties [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/sanitary-napkins(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-sanitary-napkins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/shoe-covers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-shoe-covers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electrical-accessories(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electrical-accessories [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/laboratory-glassware(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-laboratory-glassware [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/cycle-and-rickshaw-tyres-and-tubes(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-cycle-and-rickshaw-tyres-tubes [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/safe-deposit-locker-cabinets-key-locks(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-safe-deposit-locker-cabinets [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/woven-sacks-packaging-Polymer-material(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-hdpe-pp-woven-sacks-for-packaging-of-25-kg-polymer-materials [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/legal-Metrology-material-measures-Length(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-legal-metrology-material-measures-of-length [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/door-Fittings(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-door-fittings [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/drums-and-Tins(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-drums-and-tins [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/helmet-Police-Force-Civil-Defence-personnel(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-helmets-for-police-force-civil-defence-and-personal-protection [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/bottled-water-despensers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bottled-water-dispensers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/implementation-tables-and-desk-specification(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-implementation-of-is-17633-2022-specification-for-tables-and-desks [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/rubber-gskets-pressure-cookers(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-rubber-gaskets-for-pressure-cookers [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/electric-cable-photovoltic(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-electric-cable-for-photovoltaic [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/primary-lead(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-primary-lead [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/refined-nickel(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-refined-nickel [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/tin-Ingot(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-tin-ingot [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/refined-zinc(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-refined-zinc [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/teel-and-steel-products(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-bis-qco-notification-for-steel-and-steel-products [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-licence-consultants(\.php)?/?$ https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-certification(\.php)?/?$ https://bis-certifications.com/what-is-bis-certificate-indian-bis [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^cdsco(\.php)?/?$ https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-\(crs\)-registration-for-elect(\.php)?/?$ https://bis-certifications.com/what-is-crs-bis-or-crs-registration [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^lmpc-certification(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^impc-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^peso-certification(\.php)?/?$ https://bis-certifications.com/information-about-peso-certification-peso-license-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^notifications/solar-power-dc-cable(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-dc-cable-and-fire-survival-cable [R=301,L,NC]
+
 </IfModule>
 
-# HTTPS + non-www (must not depend on mod_expires)
+# =============================================================================
+# HTTPS + non-www enforcement
+# =============================================================================
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
-# Clean URL rewrite rules (works on both localhost and production)
+# =============================================================================
+# Internal clean-URL rewrites (NOT on sunconsultants.co.in)
+# =============================================================================
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Remove .php extension from URLs
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
     RewriteRule ^ /%1 [NC,L,R=301]
-    
-    # Notifications path
+
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ notifications.php?path=$1 [NC,L,QSA]
 
-    # Canonical SEO path → existing implementation (ERDA page meta uses /erda-certificate-india)
     RewriteRule ^apeda-registration-india/?$ APEDARegistration.php [NC,L]
     RewriteRule ^tac-certificate-india/?$ TACCertificate.php [NC,L]
     RewriteRule ^erda-certificate-india/?$ ERDAandERDACertificate.php [NC,L]
     RewriteRule ^saso-saber-certification/?$ SASOCertificate.php [NC,L]
 
-    # Serve .php files without the .php extension
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.php -f
     RewriteRule ^(.*?)/?$ $1.php [NC,L]
 
-    # Remove index.php from URLs
-    RewriteCond %{THE_REQUEST} ^.*/index\.php 
+    RewriteCond %{THE_REQUEST} ^.*/index\.php
     RewriteRule ^(.*)index.php$ /$1 [R=301,L]
+</IfModule>
 
+# PHP 301 fallback when LiteSpeed executes existing .php before mod_rewrite
+<IfModule mod_php.c>
+    php_value auto_prepend_file include/sunconsultants-bis-redirects.php
+</IfModule>
+<IfModule lsapi_module>
+    php_value auto_prepend_file include/sunconsultants-bis-redirects.php
 </IfModule>
 
 # Custom 404 error page
 ErrorDocument 404 /404.php
-
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:X-Forwarded-SSL} !on
-RewriteCond %{HTTP_HOST} ^sunconsultants\.co\.in$ [OR]
-RewriteCond %{HTTP_HOST} ^www\.sunconsultants\.co\.in$
-RewriteRule ^/?$ "https\:\/\/sunconsultants\.co\.in\/" [R=301,L]
