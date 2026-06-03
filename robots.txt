@@ -1,7 +1,4 @@
-# Production: allow Googlebot to crawl public pages
+# Site move in progress — allow Googlebot to crawl all URLs and follow 301 redirects.
+# Do NOT add Disallow: / during migration (Google needs to see redirects).
 User-agent: *
-Allow: /
-
-Disallow: /notifications/admin/
-
 Sitemap: https://sunconsultants.co.in/sitemap.xml
