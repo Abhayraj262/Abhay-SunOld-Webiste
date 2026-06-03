@@ -35,6 +35,10 @@ RewriteOptions inherit
     RewriteRule . https://bis-certifications.com/a-guide-to-bis-certification-indian-bis [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+isi-and-bis-cert-on-toys(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} \s/+epr-certification-consultants(\.php)?(/|\s|\?) [NC]
     RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
 
@@ -69,6 +73,34 @@ RewriteOptions inherit
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} \s/+wpc-certification-consultants(\.php)?(/|\s|\?) [NC]
     RewriteRule . https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+eta-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+apeda-registration-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/apeda-registration-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+erda-certificate-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/erda-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+icat-certificate-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/icat-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+saso-saber-certification(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/saso-saber-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+stqc-certificate-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/stqc-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+tac-certificate-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/tac-certificate-india [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} \s/+rohs-certification-consultants(\.php)?(/|\s|\?) [NC]
@@ -707,6 +739,9 @@ RewriteOptions inherit
     RewriteRule ^isi-mark-registration-certification(\.php)?/?$ https://bis-certifications.com/a-guide-to-bis-certification-indian-bis [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^isi-and-bis-cert-on-toys(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^epr-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
@@ -732,6 +767,27 @@ RewriteOptions inherit
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^wpc-certification-consultants(\.php)?/?$ https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^eta-certification-consultants(\.php)?/?$ https://bis-certifications.com/information-about-wpc-certificate-eta-approval [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^apeda-registration-india(\.php)?/?$ https://bis-certifications.com/apeda-registration-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^erda-certificate-india(\.php)?/?$ https://bis-certifications.com/erda-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^icat-certificate-india(\.php)?/?$ https://bis-certifications.com/icat-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^saso-saber-certification(\.php)?/?$ https://bis-certifications.com/saso-saber-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^stqc-certificate-india(\.php)?/?$ https://bis-certifications.com/stqc-certificate-india [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^tac-certificate-india(\.php)?/?$ https://bis-certifications.com/tac-certificate-india [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^rohs-certification-consultants(\.php)?/?$ https://bis-certifications.com/restriction-of-hazardous-substance-rohs-certificate [R=301,L,NC]
@@ -1228,9 +1284,13 @@ RewriteOptions inherit
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^notifications/([A-Za-z0-9-]+)/?$ notifications.php?path=$1 [NC,L,QSA]
 
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^apeda-registration-india/?$ APEDARegistration.php [NC,L]
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^tac-certificate-india/?$ TACCertificate.php [NC,L]
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^erda-certificate-india/?$ ERDAandERDACertificate.php [NC,L]
+    RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^saso-saber-certification/?$ SASOCertificate.php [NC,L]
 
     RewriteCond %{HTTP_HOST} !^(www\.)?sunconsultants\.co\.in$ [NC]
