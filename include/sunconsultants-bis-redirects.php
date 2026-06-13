@@ -12,6 +12,14 @@ if (!isset($_SERVER['HTTP_HOST']) || !preg_match('/^(www\.)?sunconsultants\.co\.
     return;
 }
 
+$scBisRequestPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+if (preg_match('#^/google-ads(?:/|$)#i', $scBisRequestPath)) {
+    return;
+}
+if (!empty($_SERVER['SCRIPT_FILENAME']) && stripos($_SERVER['SCRIPT_FILENAME'], '/google-ads/') !== false) {
+    return;
+}
+
 $scBisRedirects = [
     '__homepage__' => 'https://bis-certifications.com/',
     'exhibitions-and-seminar' => 'https://bis-certifications.com/seminars-and-exhibitions',

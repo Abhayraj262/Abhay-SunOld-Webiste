@@ -13,6 +13,11 @@ RewriteOptions inherit
     RewriteEngine On
     RewriteBase /
 
+    # WordPress Google Ads subsite — never apply cross-domain migration redirects
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{REQUEST_URI} ^/google-ads(/|$) [NC]
+    RewriteRule ^ - [L]
+
     # ---------- Layer 1: THE_REQUEST priority ----------
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} \s/+?(\?|\s) [NC]
@@ -1302,13 +1307,8 @@ RewriteOptions inherit
     RewriteRule ^(.*)index.php$ /$1 [R=301,L]
 </IfModule>
 
-# PHP 301 fallback when LiteSpeed executes existing .php before mod_rewrite
-<IfModule mod_php.c>
-    php_value auto_prepend_file include/sunconsultants-bis-redirects.php
-</IfModule>
-<IfModule lsapi_module>
-    php_value auto_prepend_file include/sunconsultants-bis-redirects.php
-</IfModule>
+# PHP prepend: configured in public_html/.user.ini only (not here — subdirectory
+# PHP would resolve "include/..." relative to /google-ads/ and cause HTTP 500).
 
 # Custom 404 error page
 ErrorDocument 404 /404.php

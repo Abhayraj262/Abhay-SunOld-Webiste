@@ -1,3 +1,10 @@
+# Disable parent migration auto_prepend (wrong relative path → HTTP 500 on landing pages)
+<IfModule lsapi_module>
+    php_value auto_prepend_file ""
+</IfModule>
+<IfModule mod_php.c>
+    php_value auto_prepend_file ""
+</IfModule>
 
 # BEGIN WordPress
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
@@ -7,6 +14,7 @@
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /google-ads/
+RewriteRule ^restore-google-ads-pages\.php$ - [L]
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
