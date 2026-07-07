@@ -27,6 +27,7 @@ $scBisRedirects = [
     'fmcs-certification-consultants' => 'https://bis-certifications.com/a-guide-to-bis-certification-for-foreign-manufacturers-indian-bis',
     'isi-mark-registration-certification' => 'https://bis-certifications.com/a-guide-to-bis-certification-indian-bis',
     'isi-and-bis-cert-on-toys' => 'https://bis-certifications.com/blogs/isi-products/bis-license-for-toys',
+    'bis-certification-for-footwear' => 'https://bis-certifications.com/blogs/isi-products/Footwear',
     'epr-certification-consultants' => 'https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate',
     'lmpc-certification-consultants' => 'https://bis-certifications.com/a-guide-on-how-to-obtain-lmpc-certificate',
     'plastic-waste-management-registration' => 'https://bis-certifications.com/epr-certificate-for-plastic-waste-management-pwm',

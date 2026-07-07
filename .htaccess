@@ -44,6 +44,10 @@ RewriteOptions inherit
     RewriteRule . https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-certification-for-footwear(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/blogs/isi-products/Footwear [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteCond %{THE_REQUEST} \s/+epr-certification-consultants(\.php)?(/|\s|\?) [NC]
     RewriteRule . https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
 
@@ -727,6 +731,34 @@ RewriteOptions inherit
     RewriteCond %{THE_REQUEST} \s/+notifications/solar-power-dc-cable(\.php)?(/|\s|\?) [NC]
     RewriteRule . https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-dc-cable-and-fire-survival-cable [R=301,L,NC]
 
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-scheme-x-certification-india(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/indian-bis-certification-under-scheme-x [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+bis-for-shoes-2(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/blogs/isi-products/Footwear [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+electric-toys(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+emi-certification-consultants(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/emi-emc-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+medical-device-cert-1(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+infrared-thermometer(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+soft-toys(\.php)?(/|\s|\?) [NC]
+    RewriteRule . https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
     # ---------- Layer 2: REQUEST_URI fallback ----------
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^$ https://bis-certifications.com/ [R=301,L,NC]
@@ -745,6 +777,9 @@ RewriteOptions inherit
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^isi-and-bis-cert-on-toys(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-certification-for-footwear(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/Footwear [R=301,L,NC]
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^epr-certification-consultants(\.php)?/?$ https://bis-certifications.com/a-guide-on-how-to-obtain-epr-certificate [R=301,L,NC]
@@ -1258,6 +1293,27 @@ RewriteOptions inherit
 
     RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
     RewriteRule ^notifications/solar-power-dc-cable(\.php)?/?$ https://bis-certifications.com/bis-qco-updates/bis-certificate-for-solar-dc-cable-and-fire-survival-cable [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-scheme-x-certification-india(\.php)?/?$ https://bis-certifications.com/indian-bis-certification-under-scheme-x [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^bis-for-shoes-2(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/Footwear [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^electric-toys(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^emi-certification-consultants(\.php)?/?$ https://bis-certifications.com/emi-emc-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^medical-device-cert-1(\.php)?/?$ https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^infrared-thermometer(\.php)?/?$ https://bis-certifications.com/cdsco-registration-certification [R=301,L,NC]
+
+    RewriteCond %{HTTP_HOST} ^(www\.)?sunconsultants\.co\.in$ [NC]
+    RewriteRule ^soft-toys(\.php)?/?$ https://bis-certifications.com/blogs/isi-products/bis-license-for-toys [R=301,L,NC]
 
 </IfModule>
 
